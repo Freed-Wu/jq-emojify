@@ -1,0 +1,23 @@
+---
+"on":
+  push:
+    paths-ignore:
+      - "**.md"
+  pull_request:
+    paths-ignore:
+      - "**.md"
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: Freed-Wu/publish-ppa-package@dev
+        with:
+          repository: freedwu/ppa
+          gpg_private_key: ${{secrets.GPG_PRIVATE_KEY}}
+          gpg_passphrase: ${{secrets.GPG_PASSPHRASE}}
+          tarball: ./*.tar.*
+          deb_email: ${{secrets.DEB_EMAIL}}
+          deb_fullname: freedwu

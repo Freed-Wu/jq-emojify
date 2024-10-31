@@ -1,0 +1,7 @@
+#!/usr/bin/env -S jq -L/usr/lib/jq -srRf
+include "emoji";
+. as $input |
+  [foreach (emoji[].aliases | join("|") | ":" + . + ":") as $regex (-1; . + 1; {$regex, emoji: emoji[.].emoji})] as $data |
+  [$input, 0] |
+  until(.[1] >= ($data | length) - 1; [(.[1] as $num | .[0] | gsub($data[$num].regex; $data[$num].emoji)), .[1] + 1]) |
+  .[0]

@@ -1,0 +1,14 @@
+#!/usr/bin/env -S make -f
+
+%:
+	dh $@
+
+override_dh_auto_configure: emoji.json
+
+emoji.json:
+	wget -o- https://raw.githubusercontent.com/github/gemoji/refs/heads/master/db/emoji.json
+
+override_dh_auto_build: emoji.jq
+
+emoji.jq: scripts/generate-emoji.jq.jq emoji.json
+	scripts/generate-emoji.jq.jq emoji.json > emoji.jq
