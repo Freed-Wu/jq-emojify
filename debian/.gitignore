@@ -6,6 +6,7 @@
 /debhelper-build-stamp
 /files
 /*.substvars
+*.log
 
 DEBIAN/
 usr/
