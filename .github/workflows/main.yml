@@ -13,6 +13,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Build
+        run: |
+          n=jq-emojify-0.0.1
+          cd ..
+          mv jq-emojify $n
+          tar vcaf ./$n.tar.gz $n
+          mv ./*.tar.* $n
+          mv $n jq-emojify
       - uses: Freed-Wu/publish-ppa-package@dev
         with:
           repository: freedwu/ppa
