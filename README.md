@@ -65,3 +65,11 @@ paru -S jq-emojify
 ```sh
 nix-env -iA nur.repos.Freed-Wu.jq-emojify
 ```
+
+### PPA
+
+```sh
+add-apt-repository ppa:freedwu/ppa
+apt update
+apt install jq-emojify
+```
