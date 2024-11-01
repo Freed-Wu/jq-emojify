@@ -6,9 +6,9 @@ Uploaders: Wu, Zhenyu <wuzhenyu@ustc.edu>
 Build-Depends: debhelper-compat (= 9), jq, wget
 Rules-Requires-Root: no
 Standards-Version: 4.6.0
-Homepage: https://github.com/Freed-Wu
-Vcs-Git: https://github.com/Freed-Wu
-Vcs-Browser: https://github.com/Freed-Wu
+Homepage: https://github.com/Freed-Wu/jq-emojify
+Vcs-Git: https://github.com/Freed-Wu/jq-emojify
+Vcs-Browser: https://github.com/Freed-Wu/jq-emojify
 
 Package: jq-emojify
 Architecture: all
