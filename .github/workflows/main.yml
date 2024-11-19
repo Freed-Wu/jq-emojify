@@ -14,14 +14,13 @@ jobs:
     if: startsWith(github.ref, 'refs/tags/')
     steps:
       - uses: actions/checkout@v4
+        with:
+          path: jq-emojify-${{github.ref_name}}
       - name: Build
         run: |
-          n="jq-emojify-$GITHUB_REF_NAME"
-          cd ..
-          mv jq-emojify "$n"
-          tar vcaf ./"$n".tar.gz "$n"
-          mv ./*.tar.* "$n"
-          mv "$n" jq-emojify
+          tar vcafC ../jq-emojify-${{github.ref_name}}.tar.gz \
+          jq-emojify-${{github.ref_name}} ..
+          mv ../jq-emojify-${{github.ref_name}}.tar.gz .
       - uses: yuezk/publish-ppa-package@main
         with:
           repository: freedwu/ppa
