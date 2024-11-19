@@ -3,7 +3,7 @@ Section: utils
 Priority: optional
 Maintainer: Wu, Zhenyu <wuzhenyu@ustc.edu>
 Uploaders: Wu, Zhenyu <wuzhenyu@ustc.edu>
-Build-Depends: debhelper-compat (= 9), jq, wget
+Build-Depends: debhelper-compat (= 9), jq
 Rules-Requires-Root: no
 Standards-Version: 4.6.0
 Homepage: https://github.com/Freed-Wu/jq-emojify

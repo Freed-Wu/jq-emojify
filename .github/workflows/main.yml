@@ -18,8 +18,10 @@ jobs:
           path: jq-emojify-${{github.ref_name}}
       - name: Build
         run: |
+          wget -o- \
+            https://raw.githubusercontent.com/github/gemoji/refs/heads/master/db/emoji.json
           tar vcafC ../jq-emojify-${{github.ref_name}}.tar.gz \
-          jq-emojify-${{github.ref_name}} ..
+            jq-emojify-${{github.ref_name}} ..
           mv ../jq-emojify-${{github.ref_name}}.tar.gz .
       - uses: yuezk/publish-ppa-package@main
         with:
