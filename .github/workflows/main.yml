@@ -15,14 +15,15 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
+          repository: github/gemoji
+      - uses: actions/checkout@v4
+        with:
           path: jq-emojify-${{github.ref_name}}
       - name: Build
         run: |
-          wget -o- \
-            https://raw.githubusercontent.com/github/gemoji/refs/heads/master/db/emoji.json
-          tar vcafC ../jq-emojify-${{github.ref_name}}.tar.gz \
-            jq-emojify-${{github.ref_name}} ..
-          mv ../jq-emojify-${{github.ref_name}}.tar.gz .
+          mv db/emoji.json jq-emojify-${{github.ref_name}}
+          tar vcaf jq-emojify-${{github.ref_name}}.tar.gz \
+            jq-emojify-${{github.ref_name}}
       - uses: yuezk/publish-ppa-package@main
         with:
           repository: freedwu/ppa
